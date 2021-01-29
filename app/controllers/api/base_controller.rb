@@ -3,7 +3,7 @@ class Api::BaseController < ActionController::API
 
   attr_reader :current_user
 
-  require "jwt_provider"
+  # require "jwt_provider"
 
   def get_token_from_header
     auth_header.split(' ').last if auth_header
@@ -14,7 +14,7 @@ class Api::BaseController < ActionController::API
   end
 
   def decoded_token
-    payload = JWTProvider.decode(get_token_from_header) if get_token_from_header
+    payload = JwtProvider.decode(get_token_from_header) if get_token_from_header
   rescue JWT::DecodeError
     unauthorized_response('Invalid token')
   end
