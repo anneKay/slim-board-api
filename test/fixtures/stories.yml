@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  summary: MyText
+  description: MyText
+  completion_time: 2021-02-13 11:26:02
+  type: MyString
+  complexity: MyString
+  cost: 1
+
+two:
+  summary: MyText
+  description: MyText
+  completion_time: 2021-02-13 11:26:02
+  type: MyString
+  complexity: MyString
+  cost: 1

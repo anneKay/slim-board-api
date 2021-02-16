@@ -3,8 +3,6 @@ class Api::BaseController < ActionController::API
 
   attr_reader :current_user
 
-  # require "jwt_provider"
-
   def get_token_from_header
     auth_header.split(' ').last if auth_header
   end

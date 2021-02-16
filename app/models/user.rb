@@ -9,4 +9,8 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX}
 
   has_secure_password
+
+  def self.user_json(user)
+    user.as_json(except: [:password_digest])
+  end
 end

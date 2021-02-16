@@ -7,7 +7,7 @@ class Api::UsersController < Api::BaseController
       payload = { user_id: @user.id }
       token = JwtProvider.encode(payload)
       response.headers['Authorization'] = token
-      render json: { message: 'successfully signed up', user: @user}, status: 201
+      render json: { message: 'successfully signed up', data: User.user_json(@user)}, status: 201
     else
       render json: { error: @user.errors.full_messages, status: 400 }
     end

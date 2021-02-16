@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :api, default: { format: :json } do
     post 'auth/login'
     post 'auth/logout'
+    resources :story
 
     resources :users, only: [:create]
   end
