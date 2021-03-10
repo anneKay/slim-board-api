@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_02_13_103727) do
+=======
+ActiveRecord::Schema.define(version: 2021_02_19_110224) do
+>>>>>>> setup-multi-tenant-structure
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +29,10 @@ ActiveRecord::Schema.define(version: 2021_02_13_103727) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "tenant_id"
+<<<<<<< HEAD
+=======
+    t.integer "user_id"
+>>>>>>> setup-multi-tenant-structure
   end
 
   create_table "users", force: :cascade do |t|
