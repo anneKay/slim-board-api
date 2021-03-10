@@ -8,5 +8,11 @@ class User < ApplicationRecord
                     length: { maximum: 50 },
                     format: { with: VALID_EMAIL_REGEX}
 
+  has_many :stories
+
   has_secure_password
+
+  def self.user_json(user)
+    user.as_json(except: [:password_digest])
+  end
 end

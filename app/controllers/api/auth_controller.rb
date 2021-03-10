@@ -2,19 +2,19 @@ class Api::AuthController < Api::BaseController
   skip_before_action :authorized_user, only: :login
 
   def login
-    user = User.find_by(email: params[:email])
-    if user && user.authenticate(auth_params[:password])
-      token = JwtProvider.encode('user_id': user.id)
-      response.headers['Authorization'] = token
-      render json: { message: 'Login successful', user: user }, status: 200 and return
-    end
-
-    render json: { error: 'Incorrect username or password'}, status: 401
-
+    token = JwtProvider.encode('user_id': user.id) if user.present?
+    response.headers['Authorization'] = token
+    json_response(user, :ok)
   end
 
-
   private
+
+  def user
+    user ||= User.find_by(email: auth_params[:email])
+    return user if user.present? && user.authenticate(auth_params[:password])
+
+    raise(ExceptionHandler::AuthenticationError, Message.invalid_credentials)
+  end
 
   def auth_params
     params.permit(:email, :password)
