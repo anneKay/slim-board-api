@@ -14,6 +14,6 @@ class JwtProvider
     # add ability to access key as symbol or string
     HashWithIndifferentAccess.new decoded
   rescue JWT::DecodeError => e
-    Raise ExceptionHandler::InvalidToken, e.message
+    raise ExceptionHandler::InvalidToken, e.message
   end
 end
