@@ -23,7 +23,6 @@ class AuthorizeApiRequest
 
   def decoded_token
     @decode_token ||= JwtProvider.decode(get_token_from_header) if get_token_from_header
-    raise(ExceptionHandler::InvalidToken, Message.invalid_token)
   end
 
   def user
